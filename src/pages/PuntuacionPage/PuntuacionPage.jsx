@@ -1,25 +1,22 @@
-import { Titulo } from "../../components/Titulo/Titulo";
-import { CajaPuntos } from "../../components/CajaPuntos/CajaPuntos";
-import { Separador } from "../../components/Separador/Separador";
+import { useNavigate } from "react-router-dom";
 import { Boton } from "../../components/Boton/Boton";
-import { useHistory } from "react-router-dom";
+import { CajaPuntos } from "../../components/CajaPuntos/CajaPuntos";
+import { GameLayout } from "../../components/Layouts/GameLayout";
+import { Separador } from "../../components/Separador/Separador";
 
 const PuntuacionPage = () => {
-    let history = useHistory();
-    const style = { backgroundColor: "gray", height: "100%", width: "100%" };
+    const navigate = useNavigate();
 
     const navigateToJuegoPage = () => {
-        history.push("juego");
-    };
+        navigate('/juego');
+    }
 
     return (
-        <div style={style} className="puntuacion_page">
-            <Titulo posicion="center" texto="React Aracade"></Titulo>
-            <Separador size={3}></Separador>
-            <CajaPuntos></CajaPuntos>
-            <Separador size={3}></Separador>
-            <Boton onClick={navigateToJuegoPage} texto="Jugar"></Boton>
-        </div>
+        <GameLayout texto="PuntuaciónPage">
+            <CajaPuntos />
+            <Separador size={3} />
+            <Boton onClick={navigateToJuegoPage} texto="Jugar" />
+        </GameLayout>
     );
 };
 
